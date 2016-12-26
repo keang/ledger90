@@ -11,3 +11,11 @@
   margin-top: 30px;
   margin-bottom: 30px;
 }
+
+.alert-alert {
+  @extend .alert-warning;
+}
+
+.alert-notice {
+  @extend .alert-info;
+}
