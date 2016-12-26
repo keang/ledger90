@@ -20,4 +20,4 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  no_transactions: 'No transactions recorded yet. Click "Add" to start.'

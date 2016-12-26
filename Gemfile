@@ -58,6 +58,7 @@ group :development do
 end
 
 group :test do
+  gem 'forgery'
   gem 'capybara'
   gem 'factory_girl_rails'
 end
