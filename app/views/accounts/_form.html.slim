@@ -7,6 +7,15 @@
     = f.label :type, "Account type"
     = f.collection_select(:type, Account::TYPE, :to_s, :to_s, {value: account.type}, {class: "form-control"})
 
+  .well.well-sm.small
+    p The account type affects how transactions are classified.
+    p For Asset and Expense accounts:
+    ul
+      li Positive transactions are 'debit'
+      li Negative transactions are 'credit'.
+    p It's the reverse for Income, Equity and Liabilty accounts.
+
+
   .form-group
     = f.label :cents_balance, "Starting balance (in cents)"
     = f.number_field :cents_balance, value: account.cents_balance, class: "form-control"
