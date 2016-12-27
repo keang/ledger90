@@ -24,7 +24,7 @@ class AccountsController < ApplicationController
   end
 
   def current_account
-    @current_account ||= Account.find params[:id]
+    @current_account ||= current_user.accounts.find params[:id]
   end
 
   private
