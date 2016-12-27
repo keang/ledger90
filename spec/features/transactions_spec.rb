@@ -12,10 +12,14 @@ RSpec.describe "transaction management" do
   describe "listing transactions" do
     context "user has more than 20 transactions" do
       let!(:transactions) { create_list(:transaction, 25, account: account) }
+
       it "shows all 25 transactions in a reverse chronological order" do
         visit account_path(account)
         expect(page).to have_selector(".transaction", count: 25)
         expect(first(".transaction").find(".id").text).to eq transactions.last.id.to_s
+        expect(page).to have_content account.name
+        expect(page).to have_content account.type
+        expect(page).to have_content account.dollar_balance
       end
     end
 
