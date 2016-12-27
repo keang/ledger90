@@ -2,6 +2,8 @@ h2 My Accounts
 
 = link_to "Create new account", new_account_path, class: "btn btn-default"
 
+hr
+
 .row
   - current_user.accounts.each do |acc|
     = render(partial: "accounts/account", locals: { account: acc })

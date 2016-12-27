@@ -30,7 +30,7 @@ RSpec.describe "transaction management" do
   describe "create new transaction" do
     subject do
       visit account_path(account)
-      click_link "Add new"
+      click_link "Add transaction"
       # select "Accounts Receivables", from: "Account"
       fill_in "Amount", with: 10000
       fill_in "Description", with: "Cash sales"

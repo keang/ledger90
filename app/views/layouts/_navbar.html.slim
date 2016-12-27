@@ -7,7 +7,7 @@ nav.navbar.navbar-default
         span.icon-bar
         span.icon-bar
 
-      .navbar-brand href="/"
+      a.navbar-brand href="/"
         .logo
 
     .navbar-collapse.collapse#menu
@@ -16,5 +16,5 @@ nav.navbar.navbar-default
           li
             = link_to('Logout', destroy_user_session_path, :method => :delete)
       - else
-        p.navbar-text Welcome. Please log in.
+        p.navbar-right.navbar-text Welcome. Please log in.
 

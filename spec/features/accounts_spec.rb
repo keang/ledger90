@@ -7,6 +7,22 @@ RSpec.describe "account management" do
     login_as(user, scope: :user)
   end
 
+  describe "list accounts" do
+    let!(:accounts) { create_list(:account, 3, user: user) }
+    subject do
+      visit root_path
+    end
+
+    it "should show accounts" do
+      subject
+      accounts.each do |acc|
+        expect(page).to have_content acc.name
+        expect(page).to have_content acc.type
+        expect(page).to have_content acc.dollar_balance
+      end
+    end
+  end
+
   describe "create new account" do
     subject do
       visit root_path
