@@ -23,4 +23,28 @@ RSpec.describe "transaction management" do
       end
     end
   end
+
+  describe "create new transaction" do
+    # See http://accounting-simplified.com/financial/double-entry/debit-&-credit.html
+    let(:account1) { create(:account, name: "Accounts Receivables", type: "Asset") }
+    let(:account2) { create(:account, name: "Sales Revenue", type: "Income") }
+    subject do
+      visit "/"
+      click_link "Add new"
+      select "Accounts Receivables", from: "First account"
+      fill_in "Amount", with: 100.00
+      select "Sales Revenue", from: "Second account"
+      click_link "Submit"
+    end
+
+    it "should show success message and list new row" do
+      expect { subject }.to change { [account1.records.count, account2.records.count] }.
+        by { [1, 1] }
+      expect(account1.records.last.amount).to eq 10000
+      expect(account2.records.last.amount).to eq 10000
+
+      expect(Transaction.last.credit).to be_a Record
+      expect(Transaction.last.debit).to be_a Record
+    end
+  end
 end
