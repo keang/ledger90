@@ -41,7 +41,7 @@ RSpec.describe "transaction management" do
       expect { subject }.to change { account.transactions.count }.by 1
       expect(account.transactions.last.cents_amount).to eq 10000
       expect(page).to have_content "Cash sales"
-      expect(page).to have_content "success"
+      expect(page).to have_content "Transaction successfully recorded"
     end
   end
 end
