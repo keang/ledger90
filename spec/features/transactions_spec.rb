@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.describe "transaction management" do
   let(:user) { create(:user) }
-  # See http://accounting-simplified.com/financial/double-entry/debit-&-credit.html
   let(:account) { create(:account, user: user, name: "Accounts Receivables", type: "Asset") }
 
   before :each do

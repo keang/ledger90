@@ -6,7 +6,8 @@ class AccountsController < ApplicationController
   end
 
   def show
-    @transactions = current_account.transactions.all.order(created_at: :desc)
+    @debits = current_account.debits.order(created_at: :desc)
+    @credits = current_account.credits.order(created_at: :desc)
   end
 
   def new

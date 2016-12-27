@@ -24,14 +24,20 @@ RSpec.describe "account management" do
   end
 
   describe "showing an account" do
-    let(:account) { create(:account, user: user) }
-    context "user has more than 20 transactions" do
-      let!(:transactions) { create_list(:transaction, 25, account: account) }
+    let(:account) { create(:account, user: user, type: "Asset") }
+    context "account has many credit and debit transactions" do
+      let!(:debits) { create_list(:transaction, 15, :increment, account: account) }
+      let!(:credits) { create_list(:transaction, 5, :decrement, account: account) }
 
-      it "shows all 25 transactions in a reverse chronological order" do
+      it "shows all transactions in a reverse chronological order" do
         visit account_path(account)
-        expect(page).to have_selector(".transaction", count: 25)
-        expect(first(".transaction").find(".id").text).to eq transactions.last.id.to_s
+        expect(page).to have_selector(".transaction", count: 20)
+        within(".debits") do
+          expect(first(".transaction").find(".id").text).to eq debits.last.id.to_s
+        end
+        within(".credits") do
+          expect(first(".transaction").find(".id").text).to eq credits.last.id.to_s
+        end
         expect(page).to have_content account.name
         expect(page).to have_content account.type
         expect(page).to have_content account.dollar_balance

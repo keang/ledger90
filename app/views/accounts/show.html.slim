@@ -18,21 +18,18 @@
 
 hr
 
-table.table.table-hover
-  thead
-    tr
-      th Date
-      th Description
-      th Amount ($)
+.panel.panel-default
+  .panel-heading
+    h2.panel-title.text-center= current_account.name
 
-  tbody
-    - @transactions.each do |t|
-      tr.transaction
-        td.id.hidden= t.id
-        td.created-at= t.created_at.to_s(:db)
-        td.description= t.description
-        td.amount= t.dollar_amount
+  .panel-body
+    .row
+      .col-sm-6.debits
+        h3.text-center Debits
+        = render(partial: "accounts/transactions_table", locals: {transactions: @debits})
+      .col-sm-6.credits
+        h3.text-center Credits
+        = render(partial: "accounts/transactions_table", locals: {transactions: @credits})
 
-- if @transactions.empty?
+- if current_account.transactions.empty?
   p= t("no_transactions")
-

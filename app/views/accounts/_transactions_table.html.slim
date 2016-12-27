@@ -1,0 +1,17 @@
+table.table.table-hover
+  thead
+    tr
+      th Date
+      th Description
+      th Amount ($)
+      th
+
+  tbody
+    - transactions.each do |t|
+      tr.transaction
+        td.id.hidden= t.id
+        td.created-at= t.created_at.to_s(:db)
+        td.description= t.description
+        td.amount= t.dollar_amount
+        td.payment-mode
+          span.label.label-default= t.payment_mode
