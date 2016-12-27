@@ -1,0 +1,18 @@
+= form_for(account, url: {action: "create"}) do |f|
+  .form-group
+    = f.label :name
+    = f.text_field :name, value: account.name, autofocus: true, class: "form-control"
+
+  .form-group
+    = f.label :type, "Account type"
+    = f.collection_select(:type, Account::TYPE, :to_s, :to_s, value: account.type, html: {class: "form-control"})
+
+  .form-group
+    = f.label :cents_balance, "Starting balance"
+    = f.number_field :cents_balance, value: account.cents_balance, class: "form-control"
+
+  .hidden
+    = f.text_field :user_id, value: account.user_id
+
+  = f.submit "Submit", class: "btn btn-primary"
+

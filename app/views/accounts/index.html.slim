@@ -1,0 +1,12 @@
+h2 My Accounts
+
+= link_to "Create new account", new_account_path, class: "btn btn-default"
+
+.row
+  - current_user.accounts.each do |acc|
+    = render(partial: "accounts/account", locals: { account: acc })
+
+- if current_user.accounts.empty?
+  p= t("no_accounts")
+
+

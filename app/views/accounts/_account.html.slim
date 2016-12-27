@@ -1,0 +1,9 @@
+.account.col-sm-4.col-xs-12.col-md-3
+  a href=account_path(acc)
+    .panel.panel-default
+      .panel-heading
+        h2.panel-title= account.name
+
+      .panel-body
+        span.label.label-default= account.type
+        h3= "${account.dollar_amount}"
