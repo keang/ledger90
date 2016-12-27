@@ -1,0 +1,14 @@
+.row
+  .col-sm-6.col-sm-offset-3.col-xs-12
+    .panel.panel-default
+
+      .panel-heading
+        h2.panel-title Edit transaction
+
+      .panel-body
+        = error_messages(@transaction)
+        = render partial: "transactions/form", locals: {transaction: @transaction, path: account_transaction_path(current_account.id, @transaction)}
+
+      .panel-footer
+        = link_to "Delete", account_transaction_path(account_id: current_account.id, id: @transaction.id), :method => :delete, class: "btn btn-danger"
+

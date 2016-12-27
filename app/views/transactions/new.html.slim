@@ -7,5 +7,5 @@
 
       .panel-body
         = error_messages(@transaction)
-        = render partial: "transactions/form", locals: {transaction: @transaction}
+        = render partial: "transactions/form", locals: {transaction: @transaction, path: account_transactions_path(current_account)}
 

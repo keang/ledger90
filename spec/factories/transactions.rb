@@ -10,5 +10,9 @@ FactoryGirl.define do
     trait :decrement do
       cents_amount { rand(-1000...0) }
     end
+
+    trait :cash do
+      payment_mode "cash"
+    end
   end
 end

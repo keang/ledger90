@@ -20,6 +20,27 @@ class TransactionsController < ApplicationController
     end
   end
 
+  def edit
+    @transaction = current_account.transactions.find params[:id]
+  end
+
+  def update
+    @transaction = current_account.transactions.find params[:id]
+    if @transaction.update(transaction_params)
+      flash[:success] = "Transaction successfully updated"
+      redirect_to account_path(@transaction.account)
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+    @transaction = current_account.transactions.find params[:id]
+    @transaction.destroy
+    flash[:warning] = "Transaction successfully destroyed"
+    redirect_to account_path(@transaction.account)
+  end
+
   private
   def transaction_params
     params.require(:transaction).permit(:description, :cents_amount, :account_id, :payment_mode)
