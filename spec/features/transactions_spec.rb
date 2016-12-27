@@ -12,8 +12,8 @@ RSpec.describe "transaction management" do
     subject do
       visit account_path(account)
       click_link "Add transaction"
-      # select "Accounts Receivables", from: "Account"
       fill_in "Amount", with: 10000
+      select "Transfer", from: "Payment mode"
       fill_in "Description", with: "Cash sales"
       click_button "Submit"
     end
@@ -22,6 +22,7 @@ RSpec.describe "transaction management" do
       expect { subject }.to change { account.transactions.count }.by 1
       expect(account.transactions.last.cents_amount).to eq 10000
       expect(page).to have_content "Cash sales"
+      expect(page).to have_content "Transfer"
       expect(page).to have_content "Transaction successfully recorded"
     end
   end

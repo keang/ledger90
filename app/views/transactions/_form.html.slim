@@ -4,6 +4,10 @@
     = f.number_field :cents_amount, value: transaction.cents_amount, autofocus: true, class: "form-control"
 
   .form-group
+    = f.label :payment_mode
+    = f.collection_select(:payment_mode, Transaction::PAYMENT_MODES, :to_s, :titleize, {value: transaction.payment_mode}, {class: "form-control"})
+
+  .form-group
     = f.label :description
     = f.text_area :description, value: transaction.description, class: "form-control"
 
