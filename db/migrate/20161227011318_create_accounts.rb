@@ -4,6 +4,7 @@ class CreateAccounts < ActiveRecord::Migration[5.0]
       t.references :user, foreign_key: true
       t.integer    :cents_balance
       t.string     :type
+      t.string     :name
 
       t.timestamps
     end

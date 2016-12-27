@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :accounts do
-    resources :transactions
+    resources :transactions, except: [:index]
   end
   devise_for :users
   root 'accounts#index'

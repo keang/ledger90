@@ -1,11 +1,12 @@
 class TransactionsController < ApplicationController
   before_action :authenticate_user!
-
-  def index
-    @transactions = current_user.transactions.all.order(created_at: :desc)
-  end
+  helper_method :current_account
 
   def new
-    @transaction = Transaction.new(user: current_user)
+    @transaction = Transaction.new(account: current_account)
+  end
+
+  def current_account
+    @current_account ||= Account.find params[:account_id]
   end
 end
