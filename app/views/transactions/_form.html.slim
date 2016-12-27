@@ -1,6 +1,6 @@
 = form_for(transaction, url: {action: "create"}) do |f|
   .form-group
-    = f.label :cents_amount, "Amount"
+    = f.label :cents_amount, "Amount(in cents)"
     = f.number_field :cents_amount, value: transaction.cents_amount, autofocus: true, class: "form-control"
 
   .form-group

@@ -8,7 +8,7 @@
     = f.collection_select(:type, Account::TYPE, :to_s, :to_s, {value: account.type}, {class: "form-control"})
 
   .form-group
-    = f.label :cents_balance, "Starting balance"
+    = f.label :cents_balance, "Starting balance (in cents)"
     = f.number_field :cents_balance, value: account.cents_balance, class: "form-control"
 
   .hidden

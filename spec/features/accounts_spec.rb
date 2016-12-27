@@ -58,7 +58,7 @@ RSpec.describe "account management" do
       click_link "Create new account"
       fill_in "Name", with: "OCBC Savings"
       select "Asset", from: "Account type"
-      fill_in "Starting balance", with: "0"
+      fill_in "Starting balance (in cents)", with: "0"
       click_button "Submit"
     end
 
