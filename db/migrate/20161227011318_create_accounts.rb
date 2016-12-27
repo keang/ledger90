@@ -1,9 +1,9 @@
 class CreateAccounts < ActiveRecord::Migration[5.0]
   def change
     create_table :accounts do |t|
-      t.reference :user, foreign_key: true
-      t.integer :cents_balance
-      t.type :string
+      t.references :user, foreign_key: true
+      t.integer    :cents_balance
+      t.string     :type
 
       t.timestamps
     end
