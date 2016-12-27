@@ -31,17 +31,17 @@ RSpec.describe "transaction management" do
     subject do
       visit account_path(account)
       click_link "Add new"
-      select "Accounts Receivables", from: "Account"
-      fill_in "Amount", with: 100.00
-      click_link "Submit"
+      # select "Accounts Receivables", from: "Account"
+      fill_in "Amount", with: 10000
+      fill_in "Description", with: "Cash sales"
+      click_button "Submit"
     end
 
     it "should show success message and list new row" do
       expect { subject }.to change { account.transactions.count }.by 1
-      expect(account.transactions.last.amount).to eq 10000
-
-      expect(Transaction.last.credit).to be_a Record
-      expect(Transaction.last.debit).to be_a Record
+      expect(account.transactions.last.cents_amount).to eq 10000
+      expect(page).to have_content "Cash sales"
+      expect(page).to have_content "success"
     end
   end
 end

@@ -1,0 +1,13 @@
+= form_for(transaction, url: {action: "create"}) do |f|
+  .form-group
+    = f.label :cents_amount, "Amount"
+    = f.number_field :cents_amount, value: transaction.cents_amount, autofocus: true, class: "form-control"
+
+  .form-group
+    = f.label :description
+    = f.text_area :description, value: transaction.description, class: "form-control"
+
+  .hidden
+    = f.text_field :account_id, value: transaction.account_id
+
+  = f.submit "Submit", class: "btn btn-primary"

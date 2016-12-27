@@ -9,4 +9,19 @@ class TransactionsController < ApplicationController
   def current_account
     @current_account ||= Account.find params[:account_id]
   end
+
+  def create
+    @transaction = Transaction.new(transaction_params)
+    if @transaction.save
+      flash[:success] = "Transaction successfully recorded"
+      redirect_to account_path(@transaction.account)
+    else
+      render 'new'
+    end
+  end
+
+  private
+  def transaction_params
+    params.require(:transaction).permit(:description, :cents_amount, :account_id)
+  end
 end
