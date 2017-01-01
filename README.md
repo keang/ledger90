@@ -1,24 +1,18 @@
-# README
+# Ledger90
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a double sided account ledger system, built with Rails 5, Ruby 2.4.0, Postgresql.
 
-Things you may want to cover:
+## Features
 
-* Ruby version
+The following features are implemented:
 
-* System dependencies
+- Login/Signup with email and password
+- Create accounts of type Asset, Expense, Incom, Equity or Liability
+- Log and edit transactions(cash, card or transfer) for an account
+- See the credits and debits of the account
 
-* Configuration
+See [feature specs](spec/features) for more details.
 
-* Database creation
+## Live demo
+See a [herkou demo deploy here](https://ledger90.herokuapp.com/).
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
